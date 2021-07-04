@@ -42,7 +42,7 @@ namespace NunitIndianStateCensus.Test
             int expected = 0;
             //Act
             StateCensusAnalyser stateCensus = new StateCensusAnalyser();
-            int totalRecords = stateCensus.GetStateCodeData(wrongfiletype, indianStateCodeHeaders);
+            int totalRecords = stateCensus.GetStateCodeData(wrongfiletype , indianStateCodeHeaders);
             //Assert
             Assert.AreEqual(expected, totalRecords);
         }
