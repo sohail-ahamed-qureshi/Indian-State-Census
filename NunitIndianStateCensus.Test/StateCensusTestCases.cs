@@ -6,8 +6,9 @@ namespace NunitIndianStateCensus.Test
     public class Tests
     {
         string indianStateHeaders = "State,Population,AreaInSqKm,DensityPerSqKm";
-        string indianStateCensusfilepath = @"C:\Users\Admin\Desktop\BridgeLabs Assignments\Indian-State-Census\IndianStateCensus\Indian state census data\IndiaState.csv";
-
+        string indianStateCensusfilepath = @"C:\Users\Admin\Desktop\BridgeLabs Assignments\Indian-State-Census\IndianStateCensus\Indian state census data\IndiaStateCensusData.csv";
+        string wrongfiletype = @"C:\Users\Admin\Desktop\BridgeLabs Assignments\Indian-State-Census\IndianStateCensus\Indian state census data\IndiaStateCensusData.txt";
+        string wrongfile = @"C:\Users\Admin\Desktop\BridgeLabs Assignments\Indian-State-Census\IndianStateCensus\Indian state census data\IndiaState.csv";
 
         [Test]
         public void GivenCSVfile_ReturnsNumberOfRecord()
@@ -28,7 +29,19 @@ namespace NunitIndianStateCensus.Test
             int expected = 0;
             //Act
             StateCensus stateCensus = new StateCensus();
-            int totalRecords = stateCensus.GetData(indianStateCensusfilepath, indianStateHeaders);
+            int totalRecords = stateCensus.GetData(wrongfile, indianStateHeaders);
+            //Assert
+            Assert.AreEqual(expected, totalRecords);
+        }
+
+        [Test]
+        public void GivenIncorrectFiletype_ReturnsCustomException()
+        {
+            //Arrange
+            int expected = 0;
+            //Act
+            StateCensus stateCensus = new StateCensus();
+            int totalRecords = stateCensus.GetData(wrongfiletype, indianStateHeaders);
             //Assert
             Assert.AreEqual(expected, totalRecords);
         }
