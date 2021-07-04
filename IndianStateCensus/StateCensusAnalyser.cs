@@ -5,7 +5,7 @@ using System.IO;
 
 namespace IndianStateCensus
 {
-    class StateCensusAnalyser
+    public class StateCensusAnalyser
     {
         /// <summary>
         /// loads the data directly from the csv file
