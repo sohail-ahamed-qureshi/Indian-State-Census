@@ -10,6 +10,8 @@ namespace NunitIndianStateCensus.Test
         string wrongfiletype = @"C:\Users\Admin\Desktop\BridgeLabs Assignments\Indian-State-Census\IndianStateCensus\Indian state census data\IndiaStateCensusData.txt";
         string wrongfile = @"C:\Users\Admin\Desktop\BridgeLabs Assignments\Indian-State-Census\IndianStateCensus\Indian state census data\IndiaState.csv";
         string delimiterwrong = @"C:\Users\Admin\Desktop\BridgeLabs Assignments\Indian-State-Census\IndianStateCensus\Indian state census data\DelimiterIndiaStateCensusData.csv";
+        string wrongHeaders = @"C:\Users\Admin\Desktop\BridgeLabs Assignments\Indian-State-Census\IndianStateCensus\Indian state census data\WrongIndiaStateCensusData.csv";
+        
         [Test]
         public void GivenCSVfile_ReturnsNumberOfRecord()
         {
@@ -54,6 +56,18 @@ namespace NunitIndianStateCensus.Test
             //Act
             StateCensus stateCensus = new StateCensus();
             int totalRecords = stateCensus.GetData(delimiterwrong, indianStateHeaders);
+            //Assert
+            Assert.AreEqual(expected, totalRecords);
+        }
+
+        [Test]
+        public void GivenIncorrectHeaders_ReturnsCustomException()
+        {
+            //Arrange
+            int expected = 0;
+            //Act
+            StateCensus stateCensus = new StateCensus();
+            int totalRecords = stateCensus.GetData(wrongHeaders, indianStateHeaders);
             //Assert
             Assert.AreEqual(expected, totalRecords);
         }
